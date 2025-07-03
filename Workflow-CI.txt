@@ -1,0 +1,11 @@
+Workflow-CI - Faqih Muhammad Ihsan
+
+1. Folder MLProject sudah dibuat berisi file modelling.py, conda.yaml, dan dataset.
+2. File MLProject diatur agar bisa dijalankan ulang otomatis menggunakan MLflow Project, dengan parameterisasi data_path.
+3. Workflow CI dibuat menggunakan GitHub Actions di file ci.yml. Saat ada perubahan di branch main, pipeline akan:
+   - Build Docker image dari MLProject.
+   - Push image ke Docker Hub (username: XzyanQi, repo: workflow-ci-image).
+   - Jalankan MLflow Project di container Docker untuk retrain model.
+4. Build Docker image berhasil, workflow dapat berjalan otomatis.
+5. Tidak ada masalah berarti saat build Docker, semua dependensi sudah sesuai di conda.yaml.
+6. Link Docker Hub: https://hub.docker.com/r/XzyanQi/workflow-ci-image

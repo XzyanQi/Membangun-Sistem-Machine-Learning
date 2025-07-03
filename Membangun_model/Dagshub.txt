@@ -1,0 +1,3 @@
+Artifact muncul di lokal karena memang disimpan di local filesystem MLflow, tapi di DagsHub nggak muncul karena keterbatasan hak akses atau fitur artifact untuk user personal.
+
+https://dagshub.com/XzyanQi/my-first-repo.mlflow/#/experiments/0?viewStateShareKey=3894e7dac091113a949e1a0b144bdfbf23f857b1cfb2b6251e919052fe25b155&compareRunsMode=TABLE

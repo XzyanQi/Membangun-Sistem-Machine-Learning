@@ -1,0 +1,31 @@
+name: Automate Preprocessing
+
+on:
+  push:
+    paths:
+      - 'preprocessing/automate_FaqihMIhsan.py'
+      - 'dataset/**'
+      - '.github/workflows/preprocessing.yml'
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas numpy scikit-learn
+
+      - name: Run automate preprocessing
+        run: python preprocessing/automate_FaqihMIhsan.py
+
+      - name: Upload preprocessed dataset
+        uses: actions/upload-artifact@v4
+        with:
+          name: emails_preprocessed
+          path: preprocessing/dataset_preprocessing/emails_preprocessed.csv

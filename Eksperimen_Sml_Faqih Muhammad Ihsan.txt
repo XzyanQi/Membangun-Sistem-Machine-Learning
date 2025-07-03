@@ -1,0 +1,33 @@
+Eksperimen SML - Faqih Muhammad Ihsan
+
+1. Dataset dan Preprocessing
+   - Dataset yang digunakan adalah emails_preprocessed.csv, hasil preprocessing sederhana dari data email (fitur hasil ekstraksi numerik, label Prediction).
+   - Tidak ada data duplikat atau nilai kosong yang mengganggu. Semua sudah dicek.
+
+2. Baseline Modelling
+   - Model pertama: Logistic Regression tanpa tuning, pakai class_weight='balanced' karena data tidak seimbang.
+   - Performa awal: Akurasi sekitar 58%, F1 Score di kelas minoritas lebih rendah. Hasil confusion matrix juga memperlihatkan masih banyak false negative.
+
+3. Hyperparameter Tuning
+   - Lanjut tuning pakai GridSearchCV (param_grid: C=[0.1, 1, 10], solver=['lbfgs', 'liblinear'], scoring pakai F1).
+   - Hasil terbaik didapat di C=0.1, solver=liblinear.
+   - Performa sedikit meningkat di F1 dan recall.
+
+4. Evaluasi
+   - Semua metrik dievaluasi: accuracy, precision, recall, f1-score, confusion matrix.
+   - Imbalance masih jadi tantangan, tapi class_weight cukup membantu.
+   - Tuning lumayan berpengaruh di F1, walaupun akurasi sedikit turun.
+
+5. Catatan Pengalaman
+   - Secara umum eksperimen berjalan lancar, hanya butuh penyesuaian di script ketika pakai MLflow lokal.
+   - Model dan confusion matrix sudah dicek, hasil sama seperti di log console.
+   - Tidak ada error berarti selama training dan evaluasi.
+
+6. Kesulitan
+   - Sempat keliru menulis nama file “prometheus.yml” jadi “promotheus.yml” saat setup monitoring, jadi Prometheus awalnya tidak mau jalan.
+   - Selain itu, seluruh tahapan modelling dan evaluasi berjalan lancar.
+
+7. Penutup
+   - Semua kode sudah dipisahkan antara baseline dan tuning.
+   - Hasil dan artefak sudah dicapture untuk submission.
+
