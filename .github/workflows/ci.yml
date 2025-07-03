@@ -8,6 +8,9 @@ on:
 jobs:
   build_and_train:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/workflow-ci-image
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -23,13 +26,13 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t XzyanQi/workflow-ci-image:latest ./Workflow-CI/MLProject
-        docker push XzyanQi/workflow-ci-image:latest
+        docker build -t $IMAGE_NAME:latest ./Workflow-CI/MLProject
+        docker push $IMAGE_NAME:latest
 
     - name: Run MLflow training inside Docker
       run: |
         docker run --rm \
           -v ${{ github.workspace }}:/workspace \
           -w /workspace/Workflow-CI/MLProject \
-          XzyanQi/workflow-ci-image:latest \
+          $IMAGE_NAME:latest \
           mlflow run . --experiment-name "spam_classification" --env-manager=local
