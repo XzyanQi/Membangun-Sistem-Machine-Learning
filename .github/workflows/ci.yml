@@ -32,7 +32,8 @@ jobs:
     - name: Run MLflow training inside Docker
       run: |
         docker run --rm \
-          -v ${{ github.workspace }}:/workspace \
-          -w /workspace/Workflow-CI/MLProject \
-          $IMAGE_NAME:latest \
-          mlflow run . --experiment-name "spam_classification" --env-manager=local
+        -v ${{ github.workspace }}:/workspace \
+        -w /workspace/Workflow-CI/MLProject \
+        $IMAGE_NAME:latest \
+        bash -c "mlflow run . --experiment-name 'spam_classification' --env-manager=local"
+
