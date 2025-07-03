@@ -4,36 +4,49 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build_and_train:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/workflow-ci-image
-
+    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-
+      uses: actions/checkout@v4
+    
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
+      uses: docker/setup-buildx-action@v3
+    
     - name: Login to Docker Hub
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build and push Docker image
+    
+    - name: Build Docker image
       run: |
         docker build -t $IMAGE_NAME:latest ./Workflow-CI/MLProject
-        docker push $IMAGE_NAME:latest
-
-    - name: Run MLflow training inside Docker
+    
+    - name: Test Docker image
       run: |
         docker run --rm \
-        -v ${{ github.workspace }}:/workspace \
-        -w /workspace/Workflow-CI/MLProject \
-        $IMAGE_NAME:latest \
-        bash -c "mlflow run . --experiment-name 'spam_classification' --env-manager=local"
-
+          -v ${{ github.workspace }}/Workflow-CI/MLProject:/app \
+          $IMAGE_NAME:latest \
+          python -c "import pandas, numpy, sklearn, mlflow; print('All imports successful')"
+    
+    - name: Run MLflow training
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}/Workflow-CI/MLProject:/app \
+          -w /app \
+          $IMAGE_NAME:latest \
+          mlflow run . --experiment-name spam_classification --env-manager=local
+    
+    - name: Push Docker image
+      if: github.ref == 'refs/heads/main'
+      run: |
+        docker push $IMAGE_NAME:latest
