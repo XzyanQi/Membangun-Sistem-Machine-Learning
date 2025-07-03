@@ -5,7 +5,6 @@ WORKDIR /app
 COPY conda.yaml .
 RUN conda env create -f conda.yaml
 
-# aktifkan conda environment saat container jalan
 SHELL ["conda", "run", "-n", "workflow-ci-env", "/bin/bash", "-c"]
 
 COPY . .
