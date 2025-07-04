@@ -1,5 +1,4 @@
 import pandas as pd
-import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
@@ -23,9 +22,4 @@ with mlflow.start_run(run_name="logreg_autolog_local"):
     print(classification_report(y_test, y_pred))
     cm = confusion_matrix(y_test, y_pred)
     print("Confusion Matrix:\n", cm)
-
-    with open("model.pkl", "wb") as f:
-        pickle.dump(model, f)
     pd.DataFrame(cm).to_csv("confusion_matrix.csv", index=False)
-    mlflow.log_artifact("model.pkl")
-    mlflow.log_artifact("confusion_matrix.csv")

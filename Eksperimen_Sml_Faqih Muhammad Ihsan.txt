@@ -27,7 +27,8 @@ Eksperimen SML - Faqih Muhammad Ihsan
    - Sempat keliru menulis nama file “prometheus.yml” jadi “promotheus.yml” saat setup monitoring, jadi Prometheus awalnya tidak mau jalan.
    - Selain itu, seluruh tahapan modelling dan evaluasi berjalan lancar.
 
-7. Penutup
-   - Semua kode sudah dipisahkan antara baseline dan tuning.
-   - Hasil dan artefak sudah dicapture untuk submission.
+7. Link Github: https://github.com/XzyanQi/Membangun-Sistem-Machine-Learning
+
+8. Sudah membuat dan mengaktifkan alert rule di Grafana. Status alert bisa firing dan terbaca pada dashboard monitoring, walaupun notifikasi email belum terkirim karena kendala sandi aplikasi/SMTP.
+
 

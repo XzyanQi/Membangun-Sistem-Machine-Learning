@@ -1,5 +1,4 @@
 import pandas as pd
-import pickle
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
@@ -25,14 +24,10 @@ gs = GridSearchCV(
 )
 gs.fit(X_train, y_train)
 best_model = gs.best_estimator_
-
 y_pred = best_model.predict(X_test)
 
 cm = confusion_matrix(y_test, y_pred)
 pd.DataFrame(cm).to_csv("confusion_matrix_tuning.csv", index=False)
-
-with open("model_tuning.pkl", "wb") as f:
-    pickle.dump(best_model, f)
 
 with mlflow.start_run(run_name="tuning_manual_logging_local"):
     mlflow.log_param('C', best_model.C)
@@ -42,8 +37,7 @@ with mlflow.start_run(run_name="tuning_manual_logging_local"):
     mlflow.log_metric('recall', recall_score(y_test, y_pred, zero_division=0))
     mlflow.log_metric('f1_score', f1_score(y_test, y_pred, zero_division=0))
 
-    mlflow.sklearn.log_model(best_model, "model_tuned")
-    mlflow.log_artifact("model_tuning.pkl")
+    mlflow.sklearn.log_model(best_model, "model")
     mlflow.log_artifact("confusion_matrix_tuning.csv")
 
     print("Best Params:", gs.best_params_)

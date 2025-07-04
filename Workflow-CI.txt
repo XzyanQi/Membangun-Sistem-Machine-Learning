@@ -9,3 +9,4 @@ Workflow-CI - Faqih Muhammad Ihsan
 4. Build Docker image berhasil, workflow dapat berjalan otomatis.
 5. Tidak ada masalah berarti saat build Docker, semua dependensi sudah sesuai di conda.yaml.
 6. Link Docker Hub: https://hub.docker.com/r/XzyanQi/workflow-ci-image
+7. Link Github: https://github.com/XzyanQi/Membangun-Sistem-Machine-Learning

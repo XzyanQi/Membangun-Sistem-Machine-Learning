@@ -7,3 +7,8 @@ entry_points:
     parameters:
       data_path: {type: str, default: "emails_preprocessed.csv"}
     command: "python modelling.py --data_path {data_path}"
+  
+  train:
+    parameters:
+      data_path: {type: str, default: "emails_preprocessed.csv"}
+    command: "python modelling.py --data_path {data_path}"

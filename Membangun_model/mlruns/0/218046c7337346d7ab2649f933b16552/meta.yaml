@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Faqih%20Muhammad%20Ihsan/SMSML_Faqih%20Muhammad%20Ihsan/Membangun_model/mlruns/0/218046c7337346d7ab2649f933b16552/artifacts
+end_time: 1751651011757
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 218046c7337346d7ab2649f933b16552
+run_name: logreg_autolog_local
+run_uuid: 218046c7337346d7ab2649f933b16552
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751650992724
+status: 3
+tags: []
+user_id: Faqih Muhammad Ihsan
