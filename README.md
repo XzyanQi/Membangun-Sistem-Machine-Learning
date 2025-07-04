@@ -14,7 +14,7 @@
 - `Workflow-CI.txt` : Catatan pipeline CI/CD pakai MLflow Project & Docker.
 
 - `Monitoring dan Logging/`
-    - `1.bukti_serving/` : SS serving model via FastAPI.
+    - `1.bukti_serving/` : SS serving model.
     - `2.prometheus.yml` : File config Prometheus (monitoring).
     - `3.prometheus_exporter.py` : Exporter Prometheus sederhana (custom metriks).
     - `4.bukti monitoring Prometheus/` : SS monitoring metriks di Prometheus.
