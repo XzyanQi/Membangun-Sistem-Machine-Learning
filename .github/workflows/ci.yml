@@ -49,4 +49,8 @@ jobs:
     - name: Push Docker image
       if: github.ref == 'refs/heads/main'
       run: |
+<<<<<<< HEAD
         docker push $IMAGE_NAME:latest
+=======
+        docker push $IMAGE_NAME:latest
+>>>>>>> de6a21608565b623d3ec16e87571868afcae52ce

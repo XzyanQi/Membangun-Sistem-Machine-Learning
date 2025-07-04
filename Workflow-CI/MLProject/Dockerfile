@@ -16,4 +16,8 @@ ENV PYTHONPATH=/app
 RUN conda run -n workflow-ci-env python -c "import mlflow; print('MLflow version:', mlflow.__version__)"
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "workflow-ci-env"]
+
 CMD ["python", "modelling.py", "--data_path", "emails_preprocessed.csv"]
+
+CMD ["python", "modelling.py", "--data_path", "emails_preprocessed.csv"]
+
