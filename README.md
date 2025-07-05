@@ -25,18 +25,9 @@
 ## Cara Menjalankan
 
 **Preprocessing**
-1. Otomatis
 - python automate_namafile.py
 - File hasil preprocessing otomatis akan tersimpan di: preprocessing > namadataset_preprocessing > emails_preprocessed
 - pakai dataset hasilnya
-
-2. Manual
--  Notebook Eksperimen_MSML_Faqih_Muhammad_Ihsan.ipynb berisi tahapan manual mulai dari data loading, EDA, preprocessing, hingga export hasil preprocessing manual (disimpan sebagai notebook_preprocessing.csv).
-
-3. Keterangan File:
-- emails.csv: Data original/mentah.
-- emails_preprocessed.csv: Data hasil preprocessing otomatis menggunakan automate_FaqihMIhsan.py.
-- notebook_preprocessing.csv: Data hasil preprocessing manual dari notebook.
 
 **Modelling & MLflow:**
 - Pastikan sudah install dependensi di requirements.txt.
